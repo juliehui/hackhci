@@ -1,18 +1,15 @@
  function calculate(){
-    var tokens=getexpression()
+    var tokens=gettokens()
+    
+    
     var answer = evaluate(tokens)
     var output = $('#output'); 
     output.text(answer)
  }
  
- function getexpression(){
+ function gettokens(){
     var input = $('#expression'); //get the box
     var inputexpression = input.val(); //get value inside the box
-    var tokens = gettokens(inputexpression)
-    return tokens
- }
- 
- function gettokens(inputexpression){
     var pattern = /\d+|\+|\*|\/|\-|\(|\)/g
     var tokens = inputexpression.match(pattern);
     return tokens
@@ -24,7 +21,8 @@
     num=parseInt(num,10)
     if (isNaN(num))
         {
-            throw "number expected"     //break down, does not take in operator 
+            throw "number expected"      
+            
         }
     else
         {
@@ -36,15 +34,15 @@
 function evaluate(tokens){
     if (tokens.length<1)
         {
-            throw "empty array"
+            throw "empty array"     
         }
-    var value=read_operand(tokens)
+    var value=read_operand(tokens)      //value is num from read_operand
     while (tokens.length>0)
-        {
-            var operator=read_operand(tokens)
-            if (operator != "+"||"-"||"/"||"*"||"("||")")
+         {
+            var operator=tokens.shift()
+            if ((operator != "+") && (operator != "-") && (operator != "/") && (operator != "*") && (operator != "(") && (operator != ")"))
                 {
-                    throw "unrecognized error" 
+                    throw "not an operator" 
                 }
             if (tokens.length<1)
                 {
@@ -52,7 +50,7 @@ function evaluate(tokens){
                 }
             var temp = read_operand(tokens)
             value=operate(value,operator,temp)
-        }
+         }
     return value
     } 
 
