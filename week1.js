@@ -1,7 +1,5 @@
  function calculate(){
     var tokens=gettokens()
-    
-    
     var answer = evaluate(tokens)
     var output = $('#output'); 
     output.text(answer)
@@ -15,23 +13,7 @@
     return tokens
  }
  
- function read_operand(tokens){
-    var num = tokens[0]
-    tokens=tokens.shift()
-    num=parseInt(num,10)
-    if (isNaN(num))
-        {
-            throw "number expected"      
-            
-        }
-    else
-        {
-            return num  
-        }
-    }
-        
-        
-function evaluate(tokens){
+ function evaluate(tokens){
     if (tokens.length<1)
         {
             throw "empty array"     
@@ -53,6 +35,25 @@ function evaluate(tokens){
          }
     return value
     } 
+ 
+ function read_operand(tokens){
+    var num = tokens[0]
+    tokens=tokens.shift()
+    num=parseInt(num,10)
+    // if (num=="-") {              //turn number into negative and return
+    //     num = tokens[0]
+    //     num=parseInt(num,10)
+    //     num=num.reverse()
+    //     return num
+    //     }
+    else if (isNaN(num)) {
+        throw "number expected"      
+        }
+    else {
+        return num  
+        }
+    }
+        
 
 function operate(value,operator,temp){
     switch(operator){
