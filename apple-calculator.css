@@ -12,8 +12,11 @@
     left: 25px;
     top: 10px;
     background-color: RGB(236,252,188);
-    box-shadow: inset 2px 2px;   /*fix this*/
+    box-shadow: 0px 3px 10px 3px RGB(250,250,250);
+    border-color: RGB(36,36,36);
     margin-bottom:30px;
+    border-color: RGB(36,36,36);
+    border-width: 10px;
 }
 
 
@@ -33,12 +36,18 @@
     
     font-size: 25px;
     font-family: "Lucida Grande";
+    
+    box-shadow: 0px 5px 15px RGB(250,250,250) inset;
+    border-color: RGB(36,36,36);
+    border-width: 1px;
 }
 
 .bottomrow .zero{
     width: 195px;
     height: 55px;
     border-radius: 10px;
+    border-color: RGB(36,36,36);
+    border-width: 1px;
 }
 
 .row123 button {
@@ -51,6 +60,9 @@
     top: 10px;
     font-size: 25px;
     font-family: "Lucida Grande";
+    box-shadow: 0px 5px 15px RGB(250,250,250) inset;
+    border-color: RGB(36,36,36);
+    border-width: 1px;
 }
 
 .bottomrow button{
@@ -63,6 +75,9 @@
     bottom: 13px;
     font-size: 25px;
     font-family: "Lucida Grande";
+    box-shadow: 0px 5px 15px RGB(250,250,250) inset;
+    border-color: RGB(36,36,36);
+    border-width: 1px;
 }
 
 .bottomrow .equal{
@@ -71,4 +86,7 @@
     border-radius: 10px;
     position: relative;
     top: -45px;
+    box-shadow: 0px 5px 15px RGB(250,250,250) inset;
+    border-color: RGB(36,36,36);
+    border-width: 1px;
 }
