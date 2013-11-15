@@ -2,7 +2,7 @@
     var tokens=gettokens()
     var answer = evaluate(tokens)
     var output = $('#output'); 
-    output.text(answer)
+    output.text(answer)    //how to keep adding to box and not rewrite?
  }
  
  function gettokens(){
@@ -37,17 +37,19 @@
     } 
  
  function read_operand(tokens){
-    var num = tokens[0]
-    tokens=tokens.shift()
-    num=parseInt(num,10)
-    if (isNaN(num))
-        {
-            throw "number expected"      
-            
+    var num=tokens.shift()      //move cursor up 1 step
+    if (num=="-") {             //turn number into negative and return
+        num = tokens.shift()    //num = number after negative
+        num=parseInt(num,10)    //turn number after negative into an int
+        num=num*-1              //multiply number by -1
+        return num              
         }
-    else
-        {
-            return num  
+    else if (isNaN(num)) {    //change to else if later
+        throw "number expected"      
+        }
+    else {
+        num=parseInt(num,10)        //turn num into an int
+        return num  
         }
     }
         
@@ -67,9 +69,11 @@ function operate(value,operator,temp){
     }
     }
     
-// function button2box(){        //call this for onclick
-    
-// }
+function button2box(button){        //when button is clicked, put button value in box
+    var buttonval=$(button).text()
+    $('#box').append(buttonval);
+
+    }
     
     
 //console.log(val.toUpperCase()); //log it
