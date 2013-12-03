@@ -1,13 +1,13 @@
  function calculate(){
     var tokens=gettokens()
     var answer = evaluate(tokens)
-    var output = $('#output'); 
-    output.text(answer)    //how to keep adding to box and not rewrite?
+    var box = $('#box');   //. instead of # for class 
+    box.text(answer)    //how to keep adding to box and not rewrite?
  }
  
  function gettokens(){
     var input = $('#box'); //get the box
-    var inputexpression = input.val(); //get value inside the box
+    var inputexpression = input.text(); //get value inside the box
     var pattern = /\d+|\+|\*|\/|\-|\(|\)/g
     var tokens = inputexpression.match(pattern);
     return tokens
@@ -70,8 +70,15 @@ function operate(value,operator,temp){
     }
     
 function button2box(button){        //when button is clicked, put button value in box
-    var buttonval=$(button).text()
-    $('#box').append(buttonval);
+    if ($(button).text()=="="){     //if this was taking from an input box, it would be .val()
+        calculate()
+    } else if ($(button).text()=="C"){
+        $('#box').empty()
+    } else{
+        var buttonval=$(button).text()
+        $('#box').append(buttonval);
+    }
+    
 
     }
     
