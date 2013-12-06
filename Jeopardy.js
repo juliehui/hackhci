@@ -1,4 +1,4 @@
-var test = (1) 
+//var test = 1
 var jeopardy = (function() {
     var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'What is the Chicken Shack', 'pointValue' : 100},
     
@@ -8,11 +8,6 @@ var jeopardy = (function() {
     var exports = {};
     var score = 0;
     var currentQuestion = 0;
-                      
-    function displayScore(){
-        // displays the score
-        $('.score').html('Your score:' + score);
-    }
     
     function checkAnswer(){
         // 1. check if something is the correct answer
@@ -23,19 +18,21 @@ var jeopardy = (function() {
             displayScore(); 
             currentQuestion++
             displayQuestion()
-            $('.answerBox').val('');
         }else{
             alert("Incorrect!")
         }
-        
-        // 3. regardless, move to the next question
+        $('.answerBox').val('');  // 3. regardless, move to the next question  
     }
-                      
-    
+
     function displayQuestion(){
         // displays the current question
         $('.question').html('Question:' + questions[currentQuestion]['text']);
           
+    }
+
+    function displayScore(){
+        // displays the score
+        $('.score').html('Your score:' + score);
     }
 
     
@@ -54,6 +51,6 @@ $(document).ready(function(){
     jeopardy.setup();
 });
 
-    exports.setup = setup;
+    exports.setup = setup;          //what is this?
     return exports;
 })()
