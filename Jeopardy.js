@@ -1,5 +1,5 @@
 //var test = 1
-var jeopardy = (function() {
+var jeopardy = (function() {        //what is this again?
     var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'What is the Chicken Shack', 'pointValue' : 100},
     
     {'text': ' This the best school in the universe', 'answer': 'What is Northwestern', 'pointValue' : 200}                 
@@ -47,7 +47,18 @@ var jeopardy = (function() {
         
     }
 
+    function checkHTML(){
+        function supports_html5_storage() {
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+        return false;
+        }
+        }
+    }
+
 $(document).ready(function(){
+    //jeopardy.checkHTML();
     jeopardy.setup();
 });
 
