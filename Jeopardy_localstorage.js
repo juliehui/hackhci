@@ -1,25 +1,33 @@
 //var test = 1
 var jeopardy = (function() {        //what is this again?
-    var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'What is the Chicken Shack', 'pointValue' : 100},
+    var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'Chicken Shack', 'pointValue' : 100},
     
-    {'text': ' This the best school in the universe', 'answer': 'What is Northwestern', 'pointValue' : 200}]
-
-    localStorage.setItem('questions', JSON.stringify(questions)) //dictionary gets turned into a string in localStorage 
-
+    {'text': ' This the best school in the universe', 'answer': 'Northwestern', 'pointValue' : 200}]
     var exports = {};
-    var score = 0;
-    var currentQuestion = 0;
-    
+    //var score = 0;
+    //var currentQuestion = 0;
+    if (!localStorage['score']){
+        localStorage['score']=0
+    }
+    if (!localStorage['currentQuestion']){
+        localStorage['currentQuestion']=0
+    }
+
+    // var score=parseInt(localStorage['score'])                            //can we set global variables in javascript where they keep updating?
+    // var currentQuestion=parseInt(localStorage['currentQuestion'])
+
     function checkAnswer(){
         // 1. check if something is the correct answer
-        if($('.answerBox').val()==localStorage.getItem(questions[currentQuestion]['answer'])){
+        var currentQuestion=parseInt(localStorage['currentQuestion'])
+        var score=parseInt(localStorage['score'])
+        if($('.answerBox').val()==questions[currentQuestion]['answer']){
             alert("Correct!")
             // 2. if it is, increment the score and call displayScore
-            score+=localStorage.getItem(questions[currentQuestion]['pointValue'])
+            localStorage['score']+=questions[currentQuestion]['pointValue']
             displayScore(); 
-            currentQuestion++
+            localStorage['currentQuestion']=currentQuestion+1
             displayQuestion()
-        }else{
+        } else{
             alert("Incorrect!")
         }
         $('.answerBox').val('');  // 3. regardless, move to the next question  
@@ -27,15 +35,14 @@ var jeopardy = (function() {        //what is this again?
 
     function displayQuestion(){
         // displays the current question
-        var dict = localStorage.getItem('questions')
-        JSON.parse(dict)        //don't know where to put this
-        $('.question').html('Question:' + dict[currentQuestion]['text']);
-          
+        var currentQuestion=parseInt(localStorage['currentQuestion'])
+        $('.question').html('Question:' + questions[currentQuestion]['text']);    
     }
 
     function displayScore(){
         // displays the score
-        $('.score').html('Your score:' + score);
+        var score=parseInt(localStorage['score'])
+        $('.score').html('Your score: ' + score);
     }
 
     
@@ -50,18 +57,7 @@ var jeopardy = (function() {        //what is this again?
         
     }
 
-    function checkHTML(){       //not sure if this works
-        function supports_html5_storage() {
-        try {
-            return 'localStorage' in window && window['localStorage'] !== null;
-        } catch (e) {
-        return false;
-        }
-        }
-    }
-
 $(document).ready(function(){
-    //jeopardy.checkHTML();
     jeopardy.setup();
 });
 
