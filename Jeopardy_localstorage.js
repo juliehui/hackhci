@@ -2,9 +2,9 @@
 var jeopardy = (function() {        //what is this again?
     var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'What is the Chicken Shack', 'pointValue' : 100},
     
-    {'text': ' This the best school in the universe', 'answer': 'What is Northwestern', 'pointValue' : 200}                 
-                    ]
-    localStorage.setItem('questions', JSON.stringify(questions))
+    {'text': ' This the best school in the universe', 'answer': 'What is Northwestern', 'pointValue' : 200}]
+
+    localStorage.setItem('questions', JSON.stringify(questions)) //dictionary gets turned into a string in localStorage 
 
     var exports = {};
     var score = 0;
@@ -27,7 +27,9 @@ var jeopardy = (function() {        //what is this again?
 
     function displayQuestion(){
         // displays the current question
-        $('.question').html('Question:' + localStorage.getItem(questions[currentQuestion]['text']));
+        var dict = localStorage.getItem('questions')
+        JSON.parse(dict)        //don't know where to put this
+        $('.question').html('Question:' + dict[currentQuestion]['text']);
           
     }
 
