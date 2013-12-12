@@ -5,18 +5,11 @@ var jeopardy = (function() {
     var exports = {};
     //var score = 0;
     //var currentQuestion = 0;
-    if (!localStorage['score']){
-        localStorage['score']=0
-    }
-    if (!localStorage['currentQuestion']){
-        localStorage['currentQuestion']=0
-    }
 
-    //Parse not working :(
     Parse.initialize("llTYdw6GsH3XBTpdWpzm0x1f2RIfmpxOWkOfNDPk", "J6k5OpFQ6SU1GAjPla7siBshA3FM3Qp3rupHq2My");
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
-    testObject.save({foo: "bar"}, {
+    var PlayerInfo = Parse.Object.extend("PlayerInfo");
+    var playerInfo = new PlayerInfo();
+    playerInfo.save({score: 0, currentQuestion: 0}, {
         success: function(object) {
             alert("yay! it worked");
         }
@@ -51,7 +44,6 @@ var jeopardy = (function() {
         $('.score').html('Your score: ' + score);
     }
 
-    
     function setup(){
         // show the first question
         displayQuestion();
