@@ -1,5 +1,5 @@
 //var test = 1
-var jeopardy = (function() {        //what is this again?
+var jeopardy = (function() {        
     var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'Chicken Shack', 'pointValue' : 100},
     
     {'text': ' This the best school in the universe', 'answer': 'Northwestern', 'pointValue' : 200}]
@@ -13,8 +13,15 @@ var jeopardy = (function() {        //what is this again?
         localStorage['currentQuestion']=0
     }
 
-    // var score=parseInt(localStorage['score'])                            //can we set global variables in javascript where they keep updating?
-    // var currentQuestion=parseInt(localStorage['currentQuestion'])
+    //Parse not working :(
+    Parse.initialize("llTYdw6GsH3XBTpdWpzm0x1f2RIfmpxOWkOfNDPk", "J6k5OpFQ6SU1GAjPla7siBshA3FM3Qp3rupHq2My");
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+    testObject.save({foo: "bar"}, {
+        success: function(object) {
+            alert("yay! it worked");
+        }
+    });
 
     function checkAnswer(){
         // 1. check if something is the correct answer
@@ -50,6 +57,7 @@ var jeopardy = (function() {        //what is this again?
         // show the first question
         displayQuestion();
         displayScore();
+
         // attach checkAnswer to the button
         $('#answerButton').click(function(){
             checkAnswer();
