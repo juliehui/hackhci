@@ -1,8 +1,6 @@
 //var test = 1
 var jeopardy = (function() {        //what is this again?
-    var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'Chicken Shack', 'pointValue' : 100},
-    
-    {'text': ' This the best school in the universe', 'answer': 'Northwestern', 'pointValue' : 200}]
+    var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'Chicken Shack', 'pointValue' : 100}, {'text': ' This the best school in the universe', 'answer': 'Northwestern', 'pointValue' : 200}]
     var exports = {};
     //var score = 0;
     //var currentQuestion = 0;
@@ -13,9 +11,6 @@ var jeopardy = (function() {        //what is this again?
         localStorage['currentQuestion']=0
     }
 
-    // var score=parseInt(localStorage['score'])                            //can we set global variables in javascript where they keep updating?
-    // var currentQuestion=parseInt(localStorage['currentQuestion'])
-
     function checkAnswer(){
         // 1. check if something is the correct answer
         var currentQuestion=parseInt(localStorage['currentQuestion'])
@@ -23,7 +18,7 @@ var jeopardy = (function() {        //what is this again?
         if($('.answerBox').val()==questions[currentQuestion]['answer']){
             alert("Correct!")
             // 2. if it is, increment the score and call displayScore
-            localStorage['score']+=questions[currentQuestion]['pointValue']
+            localStorage['score']=score+questions[currentQuestion]['pointValue']
             displayScore(); 
             localStorage['currentQuestion']=currentQuestion+1
             displayQuestion()
