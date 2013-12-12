@@ -1,7 +1,6 @@
 //var test = 1
 var jeopardy = (function() {        
     var questions = [{'text': ' This restaurant is the best in Evanston', 'answer': 'Chicken Shack', 'pointValue' : 100},
-    
     {'text': ' This the best school in the universe', 'answer': 'Northwestern', 'pointValue' : 200}]
     var exports = {};
     //var score = 0;
